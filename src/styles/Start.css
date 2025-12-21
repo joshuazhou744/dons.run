@@ -133,6 +133,8 @@
 /* next action */
 
 .actions {
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
@@ -141,4 +143,11 @@
     text-decoration: none;
     border: 1px solid var(--stroke);
     padding: 5px 10px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.actions .button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }

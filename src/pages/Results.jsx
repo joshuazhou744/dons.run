@@ -7,7 +7,7 @@ export function Results() {
             <h2>Results</h2>
             <div class="placeholder">[Results step layout]</div>
             <div class="actions">
-        
+                <Link class="button" href="/bodyfat">Previous</Link>
             </div>
         </section>
     );

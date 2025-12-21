@@ -54,7 +54,7 @@ export function Start() {
 
     return (
         <div class="start-page">
-            <form class="form">
+            <form class="form" autoComplete="off">
                 <div class="unit-toggle">
                     <span>Metric</span>
                     <label class="toggle">
@@ -143,9 +143,9 @@ export function Start() {
                         <input
                             type="radio"
                             name="sex"
-                            value="1"
-                            checked={state.sex === 1}
-                            onChange={() => setField("sex", 1)}
+                            value="0"
+                            checked={state.sex === 0}
+                            onChange={() => setField("sex", 0)}
                         />
                         <span>Female</span>
                     </label>
@@ -153,9 +153,9 @@ export function Start() {
                         <input
                             type="radio"
                             name="sex"
-                            value="0"
-                            checked={state.sex === 0}
-                            onChange={() => setField("sex", 0)}
+                            value="1"
+                            checked={state.sex === 1}
+                            onChange={() => setField("sex", 1)}
                         />
                         <span>Male</span>
                     </label>
