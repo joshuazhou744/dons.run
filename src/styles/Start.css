@@ -53,6 +53,10 @@
     width: 100%;
 }
 
+.form input.has-error::placeholder {
+    color: var(--error);
+}
+
 /* unit toggle */
 
 .unit-toggle {
@@ -122,11 +126,16 @@
     background: transparent;
     border-radius: 0;
     display: inline-block;
+    outline: none;
 }
 
 .sex-option input[type="radio"]:checked {
     background: var(--selected);
     border-color: var(--selected);
+}
+
+.sex-option input[type="radio"]:focus-visible {
+    outline: 1px solid var(--stroke);
 }
 
 
@@ -150,4 +159,8 @@
 .actions .button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+.actions .button:focus-visible {
+    outline: 1px solid var(--stroke);
 }
