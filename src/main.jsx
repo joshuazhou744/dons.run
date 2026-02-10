@@ -2,10 +2,12 @@ import { render } from "preact";
 import { createContext } from "preact";
 import { useMemo, useReducer, useEffect } from "preact/hooks";
 import { Link, Route, Switch } from "wouter";
+import { PageTransition } from "./components/PageTransition.jsx";
 import { Start } from "./pages/Start.jsx";
 import { Bmi } from "./pages/Bmi.jsx";
 import { BodyFat } from "./pages/BodyFat.jsx";
 import { Results } from "./pages/Results.jsx";
+import { Run } from "./pages/Run.jsx";
 import "./styles/App.css";
 
 const initialState = {
@@ -67,15 +69,18 @@ function App() {
                         Restart
                     </Link>
                 </header>
-                <Switch>
-                    <Route path="/start" component={Start} />
-                    <Route path="/bmi" component={Bmi} />
-                    <Route path="/bodyfat" component={BodyFat} />
-                    <Route path="/results" component={Results} />
-                    <Route>
-                        <Start />
-                    </Route>
-                </Switch>
+                <PageTransition>
+                    <Switch>
+                        <Route path="/start" component={Start} />
+                        <Route path="/bmi" component={Bmi} />
+                        <Route path="/bodyfat" component={BodyFat} />
+                        <Route path="/results" component={Results} />
+                        <Route path="/run" component={Run} />
+                        <Route>
+                            <Start />
+                        </Route>
+                    </Switch>
+                </PageTransition>
             </main>
         </AppStateContext.Provider>
     );

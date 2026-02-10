@@ -51,6 +51,9 @@ export function Start() {
         onValue(value, valid);
     };
 
+    const clamp = (value, min, max) =>
+        Math.max(min, Math.min(max, value));
+
     const updateAge = (value, valid) => {
         setAgeInput(value);
         if (value === "") {
@@ -110,6 +113,52 @@ export function Start() {
         const inches = nextIn === "" ? 0 : Number(nextIn);
         const totalInches = feet * 12 + inches;
         setField("height", Number((totalInches * 2.54).toFixed(1)));
+    };
+
+    const onBlurAge = () => {
+        if (ageInput === "") return;
+        const clamped = clamp(Number(ageInput), 1, 120);
+        setAgeInput(String(clamped));
+        setField("age", clamped);
+    };
+
+    const onBlurWeightMetric = () => {
+        if (weightInput === "") return;
+        const clamped = clamp(Number(weightInput), 20, 300);
+        setWeightInput(String(clamped));
+        setField("weight", clamped);
+    };
+
+    const onBlurWeightImperial = () => {
+        if (weightInput === "") return;
+        const clamped = clamp(Number(weightInput), 44, 660);
+        setWeightInput(String(clamped));
+        setField("weight", Number((clamped * 0.45359237).toFixed(1)));
+    };
+
+    const onBlurHeightMetric = () => {
+        if (heightCm === "") return;
+        const clamped = clamp(Number(heightCm), 50, 250);
+        setHeightCm(String(clamped));
+        setField("height", clamped);
+    };
+
+    const onBlurHeightFt = () => {
+        if (heightFt === "") return;
+        const clamped = clamp(Number(heightFt), 1, 8);
+        setHeightFt(String(clamped));
+        const inches = heightIn === "" ? 0 : Number(heightIn);
+        const total = clamp(clamped * 12 + inches, 20, 98);
+        setField("height", Number((total * 2.54).toFixed(1)));
+    };
+
+    const onBlurHeightIn = () => {
+        if (heightIn === "") return;
+        const clamped = clamp(Number(heightIn), 0, 11);
+        setHeightIn(String(clamped));
+        const feet = heightFt === "" ? 0 : Number(heightFt);
+        const total = clamp(feet * 12 + clamped, 20, 98);
+        setField("height", Number((total * 2.54).toFixed(1)));
     };
 
     useEffect(() => {
@@ -180,6 +229,7 @@ export function Start() {
                         name="age"
                         placeholder={errors.age || "Age"}
                         value={ageInput}
+                        onBlur={onBlurAge}
                         onInput={updateIntegerField("age", updateAge, () => {
                             setAgeInput("");
                             setField("age", "");
@@ -195,6 +245,7 @@ export function Start() {
                                 name="weight"
                                 placeholder={errors.weight || "Weight (kg)"}
                                 value={weightInput}
+                                onBlur={onBlurWeightMetric}
                                 onInput={updateIntegerField("weight", updateWeightMetric, () => {
                                     setWeightInput("");
                                     setField("weight", "");
@@ -208,6 +259,7 @@ export function Start() {
                                 name="height"
                                 placeholder={errors.height || "Height (cm)"}
                                 value={heightCm}
+                                onBlur={onBlurHeightMetric}
                                 onInput={updateIntegerField("height", updateHeightMetric, () => {
                                     setHeightCm("");
                                     setField("height", "");
@@ -224,6 +276,7 @@ export function Start() {
                                 name="weight"
                                 placeholder={errors.weight || "Weight (lb)"}
                                 value={weightInput}
+                                onBlur={onBlurWeightImperial}
                                 onInput={updateIntegerField("weight", updateWeightImperial, () => {
                                     setWeightInput("");
                                     setField("weight", "");
@@ -238,6 +291,7 @@ export function Start() {
                                     name="height-feet"
                                     placeholder={errors.heightFt || "Ft"}
                                     value={heightFt}
+                                    onBlur={onBlurHeightFt}
                                     onInput={updateIntegerField("heightFt", (value, valid) =>
                                         updateHeightImperial(
                                             value,
@@ -258,6 +312,7 @@ export function Start() {
                                     name="height-inches"
                                     placeholder={errors.heightIn || "In"}
                                     value={heightIn}
+                                    onBlur={onBlurHeightIn}
                                     onInput={updateIntegerField("heightIn", (value, valid) =>
                                         updateHeightImperial(
                                             heightFt,

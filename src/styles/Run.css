@@ -1,0 +1,128 @@
+.run-shell {
+    position: relative;
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+.run-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.run-main_panel {
+    width: 100%;
+    max-width: 560px;
+    background: var(--panel);
+    border: 1px solid var(--stroke);
+    border-radius: 4px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.run-main_title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.run-main_text {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.run-modal {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    box-sizing: border-box;
+    /* Match the app background instead of a pure black dimmer. */
+    background: rgba(18, 19, 21, 0.88);
+}
+
+.run-modal_panel {
+    width: 100%;
+    max-width: 560px;
+    background: var(--panel);
+    border: 1px solid var(--stroke);
+    border-radius: 4px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.run-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.run-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.run-pill {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--stroke);
+    color: var(--text);
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.run-pill--granted {
+    border-color: #2f6a4a;
+    color: #bdebd1;
+}
+
+.run-pill--denied {
+    border-color: #7a2f2f;
+    color: #f0b0b0;
+}
+
+.run-pill--prompt,
+.run-pill--unknown {
+    border-color: var(--stroke);
+    color: var(--muted);
+}
+
+.run-pill--unsupported {
+    border-color: #6b5a2a;
+    color: #f1d89a;
+}
+
+.run-error {
+    margin: 10px 0 0;
+    color: var(--error);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.run-actions {
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.run-coords {
+    margin-top: 14px;
+    display: grid;
+    gap: 8px;
+    font-size: 14px;
+}

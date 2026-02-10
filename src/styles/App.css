@@ -13,7 +13,8 @@ html, body {
     background-color: var(--bg);
     color: var(--text);
     font-family: "Roboto Mono", monospace;
-    overflow-y: hidden;
+    overflow: hidden;
+    height: 100%;
 }
 
 input,
@@ -24,10 +25,33 @@ button {
 }
 
 .app {
-    min-height: 100vh;
+    height: 100vh;
     padding: 24px;
     background: var(--bg);
     color: var(--text);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.button {
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid var(--stroke);
+    padding: 5px 10px;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.button:focus-visible {
+    outline: 1px solid var(--stroke);
 }
 
 .app_header {

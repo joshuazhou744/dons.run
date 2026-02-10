@@ -1,0 +1,39 @@
+.page-transition {
+    animation-duration: 350ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.page-transition--forward {
+    animation-name: slideInRight;
+}
+
+.page-transition--back {
+    animation-name: slideInLeft;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

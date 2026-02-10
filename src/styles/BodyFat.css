@@ -1,0 +1,13 @@
+.archetype-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.actions {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
