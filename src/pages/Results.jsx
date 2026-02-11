@@ -1,6 +1,6 @@
 import "../styles/Results.css";
 import { Link } from "wouter";
-import { useContext, useMemo } from "preact/hooks";
+import { useContext, useMemo, useState, useRef, useCallback } from "preact/hooks";
 import { AppStateContext } from "../main.jsx";
 import { FatVisualization, pickReference } from "../components/FatVisualization.jsx";
 
@@ -23,6 +23,17 @@ export function Results() {
 
     const ref = useMemo(() => pickReference(fatMassLbs), [fatMassLbs]);
 
+    const unhealthyBmi = Number(state.bmi) >= 25;
+    const [clickCount, setClickCount] = useState(0);
+    const savedWidth = useRef(null);
+    const runBtnRef = useCallback((node) => {
+        if (!node) return;
+        if (!savedWidth.current) savedWidth.current = node.offsetWidth + "px";
+        node.style.width = savedWidth.current;
+        node.style.textAlign = "center";
+        node.style.boxSizing = "border-box";
+    }, []);
+
     const refSwatchStyle = useMemo(() => ({
         backgroundColor: `rgb(${Math.round(ref.color[0] * 255)}, ${Math.round(ref.color[1] * 255)}, ${Math.round(ref.color[2] * 255)})`,
     }), [ref]);
@@ -36,7 +47,7 @@ export function Results() {
                     <span class="stat-value">{state.bmi ?? "--"}</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Body Fat %</span>
+                    <span class="stat-label">Estimated Body Fat %</span>
                     <span class="stat-value">{state.bodyFatPercent ?? "--"}%</span>
                 </div>
                 <div class="stat">
@@ -51,7 +62,7 @@ export function Results() {
                 <div class="viz-legend">
                     <div class="viz-legend-item">
                         <span class="viz-swatch viz-swatch--fat" />
-                        <span>Body fat</span>
+                        <span>Estimated Body Fat</span>
                     </div>
                     <div class="viz-legend-item">
                         <span class="viz-swatch" style={refSwatchStyle} />
@@ -62,7 +73,20 @@ export function Results() {
             <div class="results-actions">
                 <Link class="button" href="/bodyfat">Previous</Link>
                 <Link class="button" href="/start">Start Over</Link>
-                <Link class="button" href="/run">Take me to the promised land</Link>
+                {unhealthyBmi && clickCount < 1 ? (
+                    <button
+                        class="button"
+                        type="button"
+                        ref={runBtnRef}
+                        onClick={() => setClickCount(1)}
+                    >
+                        Take me to the promised land
+                    </button>
+                ) : (
+                    <Link class="button" href="/location" ref={runBtnRef}>
+                        {unhealthyBmi ? "Are you sure?" : "Take me to the promised land"}
+                    </Link>
+                )}
             </div>
         </section>
     );

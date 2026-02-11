@@ -2,7 +2,7 @@ import { useRef } from "preact/hooks";
 import { useLocation } from "wouter";
 import "../styles/PageTransition.css";
 
-const routeOrder = ["/start", "/bmi", "/bodyfat", "/results"];
+const routeOrder = ["/start", "/bmi", "/bodyfat", "/results", "/location", "/run"];
 
 function routeIndex(path) {
     const idx = routeOrder.indexOf(path);

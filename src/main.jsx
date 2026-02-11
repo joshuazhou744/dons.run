@@ -7,6 +7,7 @@ import { Start } from "./pages/Start.jsx";
 import { Bmi } from "./pages/Bmi.jsx";
 import { BodyFat } from "./pages/BodyFat.jsx";
 import { Results } from "./pages/Results.jsx";
+import { Location } from "./pages/Location.jsx";
 import { Run } from "./pages/Run.jsx";
 import "./styles/App.css";
 
@@ -75,6 +76,7 @@ function App() {
                         <Route path="/bmi" component={Bmi} />
                         <Route path="/bodyfat" component={BodyFat} />
                         <Route path="/results" component={Results} />
+                        <Route path="/location" component={Location} />
                         <Route path="/run" component={Run} />
                         <Route>
                             <Start />

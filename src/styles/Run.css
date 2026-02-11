@@ -46,7 +46,6 @@
     place-items: center;
     padding: 24px;
     box-sizing: border-box;
-    /* Match the app background instead of a pure black dimmer. */
     background: rgba(18, 19, 21, 0.88);
 }
 
@@ -125,4 +124,30 @@
     display: grid;
     gap: 8px;
     font-size: 14px;
+}
+
+.run-main--map {
+    padding: 24px;
+    position: relative;
+}
+
+.run-map-loading,
+.run-map-error {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.run-map-error {
+    color: var(--error);
+}
+
+.button.run-startover {
+    position: absolute;
+    top: 36px;
+    left: 36px;
+    background: #2d2d2d;
 }

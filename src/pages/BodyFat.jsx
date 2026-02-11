@@ -68,7 +68,7 @@ export function BodyFat() {
     return (
         <section class="metric-page">
             <div class="metric-content">
-                <h2>Body Fat</h2>
+                <h2>Estimated Body Fat</h2>
                 <div class="metric-value">{bodyFat !== null ? `${bodyFat}%` : "--"}</div>
                 {archetype && (
                     <div class="metric-category" style={{ color: archetype.color }}>
