@@ -1,3 +1,10 @@
 ## Dons.run
 
-WIP
+
+Find nearest mcdonalds.
+
+```
+npm install
+
+npm run dev
+```
